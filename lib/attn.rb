@@ -3,12 +3,15 @@ def attn(method = nil, color = 'yellow')
 
 	color,method = method,nil if colors.keys.include?(method)
 	color = 'yellow' unless colors.keys.include?(color)
-	
+
 	unless method
 		print "\033[#{colors[color]}m* * * * * * * * * * * * * * * * * * * * * * * * *\033[0m\n"
 	else
 		proc = Proc.new { method }
 		print "\033[#{colors[color]}m* * * * * * * * * * START * * * * * * * * * * * *\033[0m\n"
+		puts "Variable: #{method}"
+		puts "Type: #{method.class}"
+		puts "Length: #{method.length}"
 		p proc.call
 		print "\033[#{colors[color]}m* * * * * * * * * * FINISH  * * * * * * * * * * *\033[0m\n"
 	end
