@@ -1,5 +1,4 @@
 require 'colorize'
-require 'awesome_print'
 
 $COLORS = {'red' => '031','green' => '032','yellow' => '033','blue' => '034','magenta' => '035','cyan' => '036'}
 
@@ -9,7 +8,7 @@ def attn(variable = nil, color = '')
 	color = $COLORS.keys.sample unless $COLORS.keys.include?(color)
 
 	unless variable
-		star_break(color)
+		face_break(color)
 	else
 		detail_report(variable, color)
 		display_variable(variable)
@@ -23,36 +22,36 @@ private
 def display_variable(variable)
 	proc = Proc.new { variable }
 	puts
-	ap proc.call
+	p proc.call
 	puts
 end
 
-def star_break(color)
-	chars = %w"😊 😎 😇 😈 😉 😋 😏 😌 😁 😀 😂 🤣"
-	puts chars.sample
+def face_break(color)
+	chars = %w"😎 😇 😈 👹 👺 👻 👿 💀 👽 😂 🤣"
+	puts "#{chars.sample}  " * 40
 end
 
 def close_report(color)
 	str = "⬆ " * 15
 	str += " FINISH "
 	str += "⬆ " * 15
-	puts str
+	puts str.send(color)
 end
 
 def detail_report(variable, color)
 	str = "\n"
-	str += "⬇ " * 5
+	str += "⬇ ".send(color) * 5
 
-	str += " Class:"
-	str += " #{variable.class} ".send(color)
+	str += " Class:".send(color)
+	str += " #{variable.class} ".red
 
-	str += "Length:" if variable.respond_to?(:length)
-	str += " #{variable.length} ".send(color) if variable.respond_to?(:length)
+	str += "Length:".send(color) if variable.respond_to?(:length)
+	str += " #{variable.length} ".red if variable.respond_to?(:length)
 
-	str += "Caller:"
-	str += " #{caller[-1]} ".send(color)
+	str += "Caller:".send(color)
+	str += " #{caller[-1]} ".red
 
-	str += "⬇ " * 5
+	str += "⬇ ".send(color) * 5
 	puts str
 end
 
