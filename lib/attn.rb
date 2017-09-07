@@ -1,10 +1,10 @@
 require 'awesome_print'
 
-def attn(variable = nil, color = 'yellow')
+def attn(variable = nil, color = '')
 	colors = {'red' => '031','green' => '032','yellow' => '033','blue' => '034','magenta' => '035','cyan' => '036'}
 
 	color,variable = variable,nil if colors.keys.include?(variable)
-	color = 'yellow' unless colors.keys.include?(color)
+	color = colors.keys.sample unless colors.keys.include?(color)
 
 	unless variable
 		puts "\033[#{colors[color]}m* * * * * * * * * * * * * * * * * * * * * * * * *\033[0m\n"
