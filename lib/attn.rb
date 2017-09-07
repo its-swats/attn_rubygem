@@ -22,8 +22,22 @@ end
 private
 
 def detail_report(variable)
-	print "Object: #{variable}"
+	print "\33[43;30mObject:\33[0m\33[33m #{variable}\33[0m"
 	print " -- Class: #{variable.class}"
 	print " -- Length: #{variable.length}" if variable.respond_to?(:length)
 	print " -- Caller #{caller[1]}\n"
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
