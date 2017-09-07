@@ -9,11 +9,11 @@ def attn(variable = nil, color = '')
 	color = $COLORS.keys.sample unless $COLORS.keys.include?(color)
 
 	unless variable
-		puts star_break(color)
+		star_break(color)
 	else
-		puts detail_report(variable, color)
+		detail_report(variable, color)
 		display_variable(variable)
-		puts close_report(color)
+		close_report(color)
 	end
 
 end
@@ -28,13 +28,15 @@ def display_variable(variable)
 end
 
 def star_break(color)
-	""
+	chars = %w"😊 😎 😇 😈 😉 😋 😏 😌 😁 😀 😂 🤣"
+	puts chars.sample
 end
 
 def close_report(color)
 	str = "⬆ " * 15
 	str += " FINISH "
 	str += "⬆ " * 15
+	puts str
 end
 
 def detail_report(variable, color)
@@ -51,6 +53,7 @@ def detail_report(variable, color)
 	str += " #{caller[-1]} ".send(color)
 
 	str += "⬇ " * 5
+	puts str
 end
 
 
