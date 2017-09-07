@@ -1,14 +1,14 @@
 require 'colorize'
 
-$COLORS = {'red' => '031','green' => '032','yellow' => '033','blue' => '034','magenta' => '035','cyan' => '036'}
+$COLORS = ['red','green','yellow','blue','magenta','cyan']
 
 def attn(variable = nil, color = '')
 
-	color,variable = variable,nil if $COLORS.keys.include?(variable)
-	color = $COLORS.keys.sample unless $COLORS.keys.include?(color)
+	color,variable = variable,nil if $COLORS.include?(variable)
+	color = $COLORS.keys.sample unless $COLORS.include?(color)
 
 	unless variable
-		face_break(color)
+		face_break
 	else
 		detail_report(variable, color)
 		display_variable(variable)
@@ -26,7 +26,7 @@ def display_variable(variable)
 	puts
 end
 
-def face_break(color)
+def face_break
 	chars = %w"😎 😇 😈 👹 👺 👻 👿 💀 👽 😂 🤣"
 	puts "#{chars.sample}  " * 40
 end
