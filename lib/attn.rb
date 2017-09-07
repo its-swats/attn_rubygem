@@ -1,19 +1,21 @@
 require 'awesome_print'
+require 'colorize'
+
+$COLORS = {'red' => '031','green' => '032','yellow' => '033','blue' => '034','magenta' => '035','cyan' => '036'}
 
 def attn(variable = nil, color = '')
-	colors = {'red' => '031','green' => '032','yellow' => '033','blue' => '034','magenta' => '035','cyan' => '036'}
 
-	color,variable = variable,nil if colors.keys.include?(variable)
-	color = colors.keys.sample unless colors.keys.include?(color)
+	color,variable = variable,nil if $COLORS.keys.include?(variable)
+	color = $COLORS.keys.sample unless $COLORS.keys.include?(color)
 
 	unless variable
-		puts "\033[#{colors[color]}m* * * * * * * * * * * * * * * * * * * * * * * * *\033[0m\n"
+		puts "\033[#{$COLORS[color]}m* * * * * * * * * * * * * * * * * * * * * * * * *\033[0m\n"
 	else
 		proc = Proc.new { variable }
-		puts "\033[#{colors[color]}m* * * * * * * * * * START * * * * * * * * * * * *\033[0m"
-		detail_report(variable)
+		detail_report(variable, color)
 		ap proc.call
-		puts "\033[#{colors[color]}m* * * * * * * * * * FINISH  * * * * * * * * * * *\033[0m"
+		puts "\033[#{$COLORS[color]}m* * * * * * * * * * FINISH  * * * * * * * * * * *\033[0m"
+		puts String.colors
 		puts
 	end
 
@@ -21,11 +23,22 @@ end
 
 private
 
-def detail_report(variable)
-	print "\33[43;30mObject:\33[0m\33[33m #{variable}\33[0m"
-	print " -- Class: #{variable.class}"
-	print " -- Length: #{variable.length}" if variable.respond_to?(:length)
-	print " -- Caller #{caller[1]}\n"
+def detail_report(variable, color)
+	print "* * * * * ".send(color)
+
+	print "Object:".send(color)
+	print " #{variable} ".green
+
+	print "Class:".send(color)
+	print " #{variable.class} ".green
+
+	print "Length:".send(color) if variable.respond_to?(:length)
+	print " #{variable.length} ".green if variable.respond_to?(:length)
+
+	print "Caller".send(color)
+	print " #{caller[1]}".green
+
+	print " * * * * *\n".send(color)
 end
 
 

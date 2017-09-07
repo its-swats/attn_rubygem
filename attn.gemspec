@@ -11,4 +11,5 @@ Gem::Specification.new do |s|
     'http://rubygems.org/gems/attn'
   s.license       = 'MIT'
   s.add_runtime_dependency 'awesome_print', '~> 0'
+  s.add_runtime_dependency 'colorize', '~> 0'
 end
