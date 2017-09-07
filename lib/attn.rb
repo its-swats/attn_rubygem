@@ -1,21 +1,29 @@
 require 'awesome_print'
 
-def attn(method = nil, color = 'yellow')
+def attn(variable = nil, color = 'yellow')
 	colors = {'red' => '031','green' => '032','yellow' => '033','blue' => '034','magenta' => '035','cyan' => '036'}
 
-	color,method = method,nil if colors.keys.include?(method)
+	color,variable = variable,nil if colors.keys.include?(variable)
 	color = 'yellow' unless colors.keys.include?(color)
 
-	unless method
-		print "\033[#{colors[color]}m* * * * * * * * * * * * * * * * * * * * * * * * *\033[0m\n"
+	unless variable
+		puts "\033[#{colors[color]}m* * * * * * * * * * * * * * * * * * * * * * * * *\033[0m\n"
 	else
-		proc = Proc.new { method }
-		print "\033[#{colors[color]}m* * * * * * * * * * START * * * * * * * * * * * *\033[0m\n"
-		puts "Variable: #{method}"
-		puts "Type: #{method.class}"
-		puts "Length: #{method.length}"
+		proc = Proc.new { variable }
+		puts "\033[#{colors[color]}m* * * * * * * * * * START * * * * * * * * * * * *\033[0m"
+		detail_report(variable)
 		ap proc.call
-		print "\033[#{colors[color]}m* * * * * * * * * * FINISH  * * * * * * * * * * *\033[0m\n"
+		puts "\033[#{colors[color]}m* * * * * * * * * * FINISH  * * * * * * * * * * *\033[0m"
+		puts
 	end
 
+end
+
+private
+
+def detail_report(variable)
+	print "Object: #{variable}"
+	print " -- Class: #{variable.class}"
+	print " -- Length: #{variable.length}" if variable.respond_to?(:length)
+	print " -- Caller #{caller[1]}\n"
 end
