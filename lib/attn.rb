@@ -5,7 +5,7 @@ $COLORS = ['red','green','yellow','blue','magenta','cyan']
 def attn(variable = nil, color = '')
 
 	color,variable = variable,nil if $COLORS.include?(variable)
-	color = $COLORS.keys.sample unless $COLORS.include?(color)
+	color = $COLORS.sample unless $COLORS.include?(color)
 
 	unless variable
 		face_break
@@ -39,17 +39,20 @@ def close_report(color)
 end
 
 def detail_report(variable, color)
+	secondary_color = color == 'red' ? 'blue' : 'red'
 	str = "\n"
 	str += "⬇ ".send(color) * 5
 
-	str += " Class:".send(color)
-	str += " #{variable.class} ".red
+	str += " CLASS:".send(color)
+	str += " #{variable.class} ".send(secondary_color).bold
 
-	str += "Length:".send(color) if variable.respond_to?(:length)
-	str += " #{variable.length} ".red if variable.respond_to?(:length)
+	if variable.respond_to?(:length)
+		str += "LENGTH:".send(color)
+		str += " #{variable.length} ".send(secondary_color).bold
+	end
 
-	str += "Caller:".send(color)
-	str += " #{caller[-1]} ".red
+	str += "CALLER:".send(color)
+	str += " #{caller[-1]} ".send(secondary_color).bold
 
 	str += "⬇ ".send(color) * 5
 	puts str
