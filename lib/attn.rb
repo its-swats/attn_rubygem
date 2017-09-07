@@ -1,3 +1,5 @@
+require 'awesome_print'
+
 def attn(method = nil, color = 'yellow')
 	colors = {'red' => '031','green' => '032','yellow' => '033','blue' => '034','magenta' => '035','cyan' => '036'}
 
@@ -12,7 +14,7 @@ def attn(method = nil, color = 'yellow')
 		puts "Variable: #{method}"
 		puts "Type: #{method.class}"
 		puts "Length: #{method.length}"
-		p proc.call
+		ap proc.call
 		print "\033[#{colors[color]}m* * * * * * * * * * FINISH  * * * * * * * * * * *\033[0m\n"
 	end
 
