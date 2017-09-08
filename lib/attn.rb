@@ -8,12 +8,12 @@ def attn(variable = nil, color = '')
 	color = $COLORS.sample unless $COLORS.include?(color)
 
 	unless variable
-		face_break
+		display_emoji_break
 	else
 		@color,@variable = color,variable
-		detail_report
+		display_detail_header
 		display_variable
-		close_report
+		display_footer
 	end
 
 end
@@ -27,19 +27,19 @@ def display_variable
 	puts
 end
 
-def face_break
+def display_emoji_break
 	chars = %w"😎 😇 😈 👹 👺 👻 👿 💀 👽 😂 🤣"
 	puts "#{chars.sample}  " * 40
 end
 
-def close_report
+def display_footer
 	str = "⬆ " * 15
 	str += " FINISH "
 	str += "⬆ " * 15
 	puts str.send(@color)
 end
 
-def detail_report
+def display_detail_header
 	secondary_color = @color == 'red' ? 'blue' : 'red'
 	str = "\n"
 	str += "⬇ ".send(@color) * 5
@@ -58,17 +58,3 @@ def detail_report
 	str += "⬇ ".send(@color) * 5
 	puts str
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
