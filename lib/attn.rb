@@ -1,6 +1,6 @@
 require 'colorize'
 
-$COLORS = ['red','green','yellow','blue','magenta','cyan']
+$COLORS = ['red','green','light_green','yellow','blue','magenta','cyan']
 
 def attn(variable = nil, color = '')
 
