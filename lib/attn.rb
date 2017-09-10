@@ -3,16 +3,14 @@ $COLORS = {'red' => '031','green' => '032','yellow' => '033','blue' => '034','ma
 def attn(variable = nil, color = '')
 
 	color,variable = variable,nil if $COLORS.keys.include?(variable)
-	color = $COLORS.values.sample unless $COLORS.keys.include?(color)
+	return display_emoji_break unless variable
 
-	unless variable
-		display_emoji_break
-	else
-		@color,@variable = color,variable
-		display_detail_header
-		display_variable
-		display_footer
-	end
+	@variable = variable if variable
+	@color = $COLORS.values.sample unless $COLORS.keys.include?(color)
+
+	display_detail_header
+	display_variable
+	display_footer
 
 end
 
