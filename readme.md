@@ -1,34 +1,36 @@
 # attn - a gem to catch the eye
-attn is a simple Ruby Gem designed to make locating specific lines of output in the terminal easier. This is achieved through creating colored output before and after the lines of code you want to locate.
+attn is a simple Ruby Gem designed to make locating specific lines of output in the terminal easier. This is achieved through creating colored output before and after the lines of code you want to locate or by displaying a line of emojis to act as a standalone line break.
 ## Installation
 ```
 dev :> gem install attn
 ```
 ## Usage
-It's as simple as requiring the gem in your project. Once required, attn has 2 modes, and a handful of colorization options. 
+It's as simple as requiring the gem in your project. Once required, attn has 2 modes, and a handful of colorization options.
 
-```
+```ruby
 irb(main):002:0> require 'attn'
 
 irb(main):002:0> attn
-* * * * * * * * * * * * * * * * * * * * * * * * *
+🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟
 
-irb(main):008:0> attn("Code to highlight")
-* * * * * * * * * * START * * * * * * * * * * * *
-"Code to highlight"
-* * * * * * * * * * FINISH  * * * * * * * * * * *
+irb(main):008:0> attn("Variable_to_highlight")
+⬇ ⬇ ⬇ ⬇ ⬇  CLASS: Array LENGTH: 3 CALLER: sandbox.rb:26:in `<main>' ⬇ ⬇ ⬇ ⬇ ⬇
+
+"Variable_to_highlight"
+
+⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆  FINISH ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆
 ```
 
-By default, all lines of asterisks will be yellow. This can be changed by specifying a color in the arguments as seen below. 
+By default, all lines except the variable with be a random color. This can be changed by specifying a color in the arguments as seen below.
 
-```
-irb(main):009:0> attn('red')
-* * * * * * * * * * * * * * * * * * * * * * * * *
+```ruby
 
-irb(main):010:0> attn("Code to highlight, with color", "blue")
-* * * * * * * * * * START * * * * * * * * * * * *
-"Code to highlight, with color"
-* * * * * * * * * * FINISH  * * * * * * * * * * *
+irb(main):010:0> attn("Variable_to_highlight_with_color", "blue")
+⬇ ⬇ ⬇ ⬇ ⬇  CLASS: Array LENGTH: 3 CALLER: sandbox.rb:26:in `<main>' ⬇ ⬇ ⬇ ⬇ ⬇
+
+"Variable_to_highlight_with_color"
+
+⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆  FINISH ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆
 ```
 
 The supported colors are:
@@ -50,3 +52,4 @@ The supported colors are:
 ## History
 
 * 5/3/2016 - initial release
+* 9/9/2017 - ver: 0.0.2 enhanced views

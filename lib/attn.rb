@@ -32,7 +32,7 @@ def display_variable
 	puts
 end
 
-# Insert 40 rando emojis for fun && eye catching line breaks
+# 40 rando emojis for fun && eye catching line breaks
 def display_emoji_break
 	chars = %w"😎 😈 👹 👺 👻 👿 💀 👽 😂 🤣 🎃 🐶 🦊 ⭐ 🌟 🏈 🏀 ⚽ ⛔ ❓ 💽 🎁 🌠 🥓 🍤 🍗 🍖 🍕 🍰 🍦 🍭"
 	puts "#{chars.sample}  " * 40
