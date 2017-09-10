@@ -10,5 +10,4 @@ Gem::Specification.new do |s|
   s.homepage    =
     'http://rubygems.org/gems/attn'
   s.license       = 'MIT'
-  s.add_runtime_dependency 'colorize', '~> 0'
 end
