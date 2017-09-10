@@ -1,28 +1,36 @@
 # attn - a gem to catch the eye
 attn is a simple Ruby Gem designed to make locating specific lines of output in the terminal easier. This is achieved through creating colored output before and after the lines of code you want to locate or by displaying a line of emojis to act as a standalone line break.
+
 ## Installation
 ```
 dev :> gem install attn
 ```
+
 ## Usage
 It's as simple as requiring the gem in your project. Once required, attn has 2 modes, and a handful of colorization options.
 
+Require the gem in your file
 ```ruby
 irb(main):002:0> require 'attn'
+```
 
+Call the method to insert a line of random emojis
+```ruby
 irb(main):002:0> attn
 🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟
+```
 
+Or call the method with a variable to see it displayed like this
+```ruby
 irb(main):008:0> attn("Variable_to_highlight")
 ⬇ ⬇ ⬇ ⬇ ⬇  CLASS: Array LENGTH: 3 CALLER: sandbox.rb:26:in `<main>' ⬇ ⬇ ⬇ ⬇ ⬇
 
 "Variable_to_highlight"
 
-⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆  FINISH ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆
+⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆  FINISH ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆
 ```
 
-By default, all lines except the variable with be a random color. This can be changed by specifying a color in the arguments as seen below.
-
+By default, all lines except the variable with be a random color. You can specify a color as the second argument as seen below.
 ```ruby
 
 irb(main):010:0> attn("Variable_to_highlight_with_color", "blue")
@@ -30,7 +38,7 @@ irb(main):010:0> attn("Variable_to_highlight_with_color", "blue")
 
 "Variable_to_highlight_with_color"
 
-⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆  FINISH ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆
+⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆  FINISH ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆
 ```
 
 The supported colors are:
