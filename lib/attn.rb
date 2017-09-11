@@ -1,20 +1,17 @@
 $COLORS = {'red' => '031','green' => '032','yellow' => '033','blue' => '034','magenta' => '035','cyan' => '036'}
+
 # Using ANSI color coding to spruce things up
 # SYNTAX: \033[COLOR_CODEmINNER_TEXT\033[0m
 # There are cleaner ways of doing the color manipulation
 # But this approach allows for a zero dependency gem, which is better :-)
 
 
-def attn(variable = nil, color = '')
+def attn(variable = nil, msg = nil)
 
-	# IF the first input is a color set it and nil out variable
-	color,variable = variable,nil if $COLORS.keys.include?(variable)
 	return display_emoji_break unless variable
 
-	@variable = variable if variable
-
-	# IF the color passed in is recognized convert to ANSI else, assign rando ANSI
-	@color = $COLORS.keys.include?(color) ? $COLORS[color] : $COLORS.values.sample
+	@variable = variable
+	@color = $COLORS.values.sample
 
 	# View Methods
 	display_detail_header
