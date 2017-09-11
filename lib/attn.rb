@@ -10,8 +10,10 @@ def attn(variable = nil, msg = nil)
 
 	return display_emoji_break unless variable
 
-	@variable = variable
 	@color = $COLORS.values.sample
+	@variable = variable
+	@msg = msg ? msg : " FINISH "
+	@secondary_color = @color == '031' ? '034' : '031'
 
 	# View Methods
 	display_detail_header
@@ -37,15 +39,14 @@ end
 
 # TODO: off by one error on dynamic footer length
 def display_footer
-	str = "⬆ " * ((@length / 4) - 4)
-	str += " FINISH "
-	str += "⬆ " * ((@length / 4))
-	puts "\033[#{@color}m#{str}\033[0m\n"
+	str = "\033[#{@color}m⬆ " * ((@length / 4) - (@msg.length / 2) - 1)
+	str += "\033[#{@secondary_color}m #{@msg} "
+	str += "\033[#{@color}m⬆ \033[0m" * ((@length / 4))
+	puts str
 end
 
 def display_detail_header
 	# If the color being passed in is RED set secondary color to BLUE
-	secondary_color = @color == '031' ? '034' : '031'
 
 	# Initial arrows with a new line padding the top
 	str = "\n"
@@ -53,17 +54,17 @@ def display_detail_header
 
 	# Variable Class Display
 	str += "\033[#{@color}m CLASS:\033[m"
-	str += "\033[#{secondary_color}m #{@variable.class} \033[m"
+	str += "\033[#{@secondary_color}m #{@variable.class} \033[m"
 
 	# IF variable has a length display it
 	if @variable.respond_to?(:length)
 		str += "\033[#{@color}mLENGTH:\033[m"
-		str += "\033[#{secondary_color}m #{@variable.length} \033[m"
+		str += "\033[#{@secondary_color}m #{@variable.length} \033[m"
 	end
 
 	# Show where the code was called from last
 	str += "\033[#{@color}mCALLER:\033[m"
-	str += "\033[#{secondary_color}m #{caller[-1]} \033[m"
+	str += "\033[#{@secondary_color}m #{caller[-1]} \033[m"
 
 	# Closing arrows
 	str += "\033[#{@color}m⬇ \033[m" * 5
