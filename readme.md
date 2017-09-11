@@ -14,13 +14,17 @@ Require the gem in your file
 irb(main):002:0> require 'attn'
 ```
 
+### Line Break
+
 Call the method to insert a line of random emojis
 ```ruby
 irb(main):002:0> attn
 🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟
 ```
 
-Or call the method with a variable to see it displayed like this
+### Variable Display
+
+Call the method with a variable to see it displayed like this
 ```ruby
 irb(main):008:0> attn("Variable_to_highlight")
 ⬇ ⬇ ⬇ ⬇ ⬇  CLASS: Array LENGTH: 3 CALLER: sandbox.rb:26:in `<main>' ⬇ ⬇ ⬇ ⬇ ⬇
@@ -30,25 +34,19 @@ irb(main):008:0> attn("Variable_to_highlight")
 ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆  FINISH ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆
 ```
 
-By default, all lines except the variable with be a random color. You can specify a color as the second argument as seen below.
+### Variable Display with message
+
+You can also specify a message as a second argument (string) to be displayed in the footer. Easily identifying multiple attn calls.
+
 ```ruby
 
-irb(main):010:0> attn("Variable_to_highlight_with_color", "blue")
+irb(main):010:0> attn("Variable_to_highlight", "thing from that place")
 ⬇ ⬇ ⬇ ⬇ ⬇  CLASS: Array LENGTH: 3 CALLER: sandbox.rb:26:in `<main>' ⬇ ⬇ ⬇ ⬇ ⬇
 
-"Variable_to_highlight_with_color"
+"Variable_to_highlight"
 
-⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆  FINISH ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆
+⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ thing from that place ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆
 ```
-
-The supported colors are:
-
-1. red
-2. green
-3. yellow
-4. blue
-5. magenta
-6. cyan
 
 ## Contributing
 1. Fork it!
@@ -61,3 +59,4 @@ The supported colors are:
 
 * 5/3/2016 - initial release
 * 9/9/2017 - ver: 0.0.2 enhanced views
+* 9/11/2017 - ver: 0.0.3 enable optional msg output - remove ability to specify a specific color output
